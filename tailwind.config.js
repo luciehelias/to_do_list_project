@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "desktop-light": "url('/assets/images/bg-desktop-light.jpg')",
+        "mobile-light": "url('/assets/images/bg-mobile-light.jpg')",
+        "desktop-dark": "url('/assets/images/bg-desktop-dark.jpg')",
+        "mobile-dark": "url('/assets/images/bg-mobile-dark.jpg')",
+      },
       fontFamily: {
         sans: ['"Josefin Sans"', "sans-serif"], // Définit Josefin Sans comme police par défaut
       },
