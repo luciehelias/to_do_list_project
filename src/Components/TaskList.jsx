@@ -1,9 +1,20 @@
 import { TaskItem } from "./TaskItem";
 
-export const TaskList = () => {
+export const TaskList = ({ tasks, setTasks, filteredTasks }) => {
   return (
-    <div className="mt-[20px]">
-      <TaskItem />
+    <div className="mt-6">
+      {filteredTasks.map((task, i) => {
+        const isFirst = i === 0;
+        return (
+          <TaskItem
+            key={task.id}
+            task={task}
+            tasks={filteredTasks}
+            setTasks={setTasks}
+            isFirst={isFirst}
+          />
+        );
+      })}
     </div>
   );
 };
