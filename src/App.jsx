@@ -8,8 +8,9 @@ import { useTheme } from "./contexts/theme.context";
 import { TaskActions } from "./Components/TaskActions";
 import { TaskFilter } from "./Components/TaskFilter";
 import { useScreenSize } from "./contexts/screenSize.context";
-import { TaskList } from "./Components/TaskList";
+
 import { TaskForm } from "./Components/TaskForm";
+import { TaskList } from "./components/TaskList";
 
 const App = () => {
   const { styles } = useTheme();
@@ -37,7 +38,7 @@ const App = () => {
   const handleCompletedTasks = () => setFilter("completed");
 
   const mobileStyle = () => {
-    if (isMobile) return " bg-cover min-h-screen w-4/5";
+    if (isMobile) return " bg-cover w-4/5";
     return "";
   };
 
@@ -47,7 +48,7 @@ const App = () => {
           ${styles.backgroundApp} 
         }`}
     >
-      <div className={`${mobileStyle()}`}>
+      <div className={`${mobileStyle()} min-h-screen`}>
         <Header />
         <TaskForm
           placeholder="Create a new todo..."
