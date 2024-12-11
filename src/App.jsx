@@ -12,7 +12,7 @@ import { TaskList } from "./Components/TaskList";
 import { TaskForm } from "./Components/TaskForm";
 
 const App = () => {
-  const { backgroundTaskActionColor, backgroundApp } = useTheme();
+  const { styles } = useTheme();
   const { isMobile } = useScreenSize();
 
   const [tasks, setTasks] = useState(() => {
@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div
       className={`flex flex-col items-center justify-center bg-no-repeat bg-contain pt-[75px] 
-          ${backgroundApp()} 
+          ${styles.backgroundApp} 
         }`}
     >
       <div className={`${mobileStyle()}`}>
@@ -70,7 +70,7 @@ const App = () => {
         </div>
         {isMobile && (
           <div
-            className={`shadow-lg rounded-lg ${backgroundTaskActionColor()} flex justify-center p-3 mt-4`}
+            className={`shadow-lg rounded-lg ${styles.backgroundTaskActionColor} flex justify-center p-3 mt-4`}
           >
             <TaskFilter
               handleActiveTasks={handleActiveTasks}

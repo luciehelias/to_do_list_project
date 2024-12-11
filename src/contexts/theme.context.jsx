@@ -1,76 +1,43 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useMemo } from "react";
 
 const ThemeContext = createContext();
+
+const darkModeStyles = {
+  backgroundApp: "bg-mobile-dark md:bg-desktop-dark bg-dark-veryDarkBlue",
+  borderCircleColor: "border-dark-veryDarkGrayishBlue2 border",
+  backgroundInputColor: "bg-dark-veryDarkDesaturatedBlue",
+  borderBottomInputColor: "border-b-dark-veryDarkGrayishBlue1 border-b",
+  backgroundTaskActionColor: "bg-dark-veryDarkDesaturatedBlue",
+  hoverTaskActionColor: "hover:text-dark-lightGrayishBlue",
+  deleteCrossColor: "text-dark-veryDarkGrayishBlue1",
+};
+
+const lightModeStyles = {
+  backgroundApp: "bg-mobile-light md:bg-desktop-light",
+  borderCircleColor: "border-light-lightGrayishBlue border",
+  backgroundInputColor: "bg-white",
+  borderBottomInputColor: "border-b-light-lightGrayishBlue border-b",
+  backgroundTaskActionColor: "bg-white",
+  hoverTaskActionColor: "hover:text-light-veryDarkGrayishBlue",
+  deleteCrossColor: "text-light-darkGrayishBlue",
+};
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Fonction pour basculer entre les modes clair et sombre
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
+  const toggleTheme = () => setIsDarkMode((prevMode) => !prevMode);
 
-  const backgroundApp = () => {
-    if (isDarkMode) {
-      return "bg-mobile-dark md:bg-desktop-dark bg-dark-veryDarkBlue ";
-    }
-    return "bg-mobile-light md:bg-desktop-light";
-  };
-
-  const borderCircleColor = () => {
-    if (isDarkMode) {
-      return "border-dark-veryDarkGrayishBlue2 border";
-    }
-    return "border-light-lightGrayishBlue border";
-  };
-
-  const backgroundInputColor = () => {
-    if (isDarkMode) {
-      return "bg-dark-veryDarkDesaturatedBlue";
-    }
-    return "bg-white";
-  };
-
-  const borderBottomInputColor = () => {
-    if (isDarkMode) {
-      return "border-b-dark-veryDarkGrayishBlue1 border-b";
-    }
-    return "border-b-light-lightGrayishBlue border-b";
-  };
-
-  const backgroundTaskActionColor = () => {
-    if (isDarkMode) {
-      return "bg-dark-veryDarkDesaturatedBlue";
-    }
-    return "bg-white";
-  };
-
-  const hoverTaskActionColor = () => {
-    if (isDarkMode) {
-      return "hover:text-dark-lightGrayishBlue";
-    }
-    return "hover:text-light-veryDarkGrayishBlue";
-  };
-
-  const deleteCrossColor = () => {
-    if (isDarkMode) {
-      return "text-dark-veryDarkGrayishBlue1";
-    }
-    return "text-light-darkGrayishBlue";
-  };
+  const styles = useMemo(
+    () => (isDarkMode ? darkModeStyles : lightModeStyles),
+    [isDarkMode]
+  );
 
   return (
     <ThemeContext.Provider
       value={{
         isDarkMode,
         toggleTheme,
-        borderCircleColor,
-        backgroundInputColor,
-        borderBottomInputColor,
-        backgroundTaskActionColor,
-        hoverTaskActionColor,
-        backgroundApp,
-        deleteCrossColor,
+        styles,
       }}
     >
       {children}
@@ -78,6 +45,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const useTheme = () => {
-  return useContext(ThemeContext);
-};
+export const useTheme = () => useContext(ThemeContext);

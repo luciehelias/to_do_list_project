@@ -1,6 +1,6 @@
 import { TaskItem } from "./TaskItem";
 
-export const TaskList = ({ tasks, setTasks, filteredTasks }) => {
+export const TaskList = ({ setTasks, filteredTasks }) => {
   return (
     <div className="mt-6">
       {filteredTasks.map((task, i) => {

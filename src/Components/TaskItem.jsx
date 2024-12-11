@@ -5,13 +5,7 @@ import { useTheme } from "../contexts/theme.context";
 import { useScreenSize } from "../contexts/screenSize.context";
 
 export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
-  const {
-    borderCircleColor,
-    backgroundInputColor,
-    borderBottomInputColor,
-    isDarkMode,
-    deleteCrossColor,
-  } = useTheme();
+  const { isDarkMode, styles } = useTheme();
   const { isMobile } = useScreenSize();
 
   const [checked, setChecked] = useState(task.status === "completed");
@@ -47,21 +41,19 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
     setTasks(taskToKeep);
   };
 
-  const textColor = () => {
-    if (checked) {
-      return isDarkMode
-        ? "line-through text-dark-darkGrayishBlue"
-        : "line-through text-light-lightGrayishBlue";
-    } else {
-      return isDarkMode
-        ? "text-dark-lightGrayishBlue"
-        : "text-light-veryDarkGrayishBlue";
-    }
-  };
+  const textColor = checked
+    ? isDarkMode
+      ? "line-through text-dark-darkGrayishBlue"
+      : "line-through text-light-lightGrayishBlue"
+    : isDarkMode
+    ? "text-dark-lightGrayishBlue"
+    : "text-light-veryDarkGrayishBlue";
 
   return (
     <div
-      className={`flex items-center space-x-2 ${backgroundInputColor()} h-[50px] px-6 ${borderBottomInputColor()} 
+      className={`flex items-center space-x-2 ${
+        styles.backgroundInputColor
+      } h-[50px] px-6 ${styles.borderBottomInputColor} 
        justify-between group ${isFirst ? "rounded-t-md" : ""}`}
     >
       <div className="flex ">
@@ -76,14 +68,14 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
             className={`h-6 w-6 rounded-full ${
               checked
                 ? "bg-gradient-to-br from-[#00c6ff] to-[#7700ff] "
-                : borderCircleColor()
+                : styles.borderCircleColor
             } flex items-center justify-center opacity-80`}
           >
             {checked && <img src={iconCheck} alt="icon check on"></img>}
           </span>
         </label>
         <p
-          className={`pl-3 text-xl outline-none cursor-pointer ${textColor()}`}
+          className={`pl-3 text-xl outline-none cursor-pointer ${textColor}`}
           onClick={handleChange}
         >
           {task.text}
@@ -93,7 +85,9 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
         xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
-        className={`${deleteCrossColor()} cursor-pointer  transition-opacity duration-300 ${
+        className={`${
+          styles.deleteCrossColor
+        } cursor-pointer  transition-opacity duration-300 ${
           isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
         fill="currentColor"

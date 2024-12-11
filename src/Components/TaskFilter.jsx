@@ -7,12 +7,12 @@ export const TaskFilter = ({
   handleCompletedTasks,
 }) => {
   const [activeCategory, setActiveCategory] = useState("");
-  const { hoverTaskActionColor } = useTheme();
+  const { styles } = useTheme();
 
   return (
     <div className="flex gap-4">
       <p
-        className={` ${hoverTaskActionColor()} cursor-pointer ${
+        className={` ${styles.hoverTaskActionColor} cursor-pointer ${
           activeCategory === "all"
             ? "text-blue-500"
             : "text-dark-darkGrayishBlue"
@@ -29,7 +29,7 @@ export const TaskFilter = ({
         All
       </p>
       <p
-        className={` ${hoverTaskActionColor()} cursor-pointer ${
+        className={` ${styles.hoverTaskActionColor} cursor-pointer ${
           activeCategory === "active"
             ? "text-blue-500"
             : "text-dark-darkGrayishBlue"
@@ -46,7 +46,7 @@ export const TaskFilter = ({
         Active
       </p>
       <p
-        className={`${hoverTaskActionColor()} cursor-pointer ${
+        className={`${styles.hoverTaskActionColor} cursor-pointer ${
           activeCategory === "completed"
             ? "text-blue-500"
             : "text-dark-darkGrayishBlue"

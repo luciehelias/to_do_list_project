@@ -12,7 +12,7 @@ export const TaskActions = ({
   setTasks,
 }) => {
   const { isMobile } = useScreenSize();
-  const { backgroundTaskActionColor } = useTheme();
+  const { styles } = useTheme();
 
   // set number of tasks Left to 0
   const [tasksLeft, setTasksLeft] = useState(0);
@@ -25,7 +25,7 @@ export const TaskActions = ({
 
   return (
     <div
-      className={`flex justify-between px-5 py-4 ${backgroundTaskActionColor()} rounded-b-md`}
+      className={`flex justify-between px-5 py-4 ${styles.backgroundTaskActionColor} rounded-b-md`}
     >
       <p className="text-dark-darkGrayishBlue hover:text-dark-veryDarkGrayishBlue1 cursor-pointer">
         {tasksLeft} items left

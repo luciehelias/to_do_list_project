@@ -1,7 +1,7 @@
 import { useTheme } from "../contexts/theme.context";
 
 export const ClearButton = ({ tasks, setTasks }) => {
-  const { hoverTaskActionColor } = useTheme();
+  const { styles } = useTheme();
 
   const handleDelete = () => {
     const updatedTasks = tasks.filter((task) => task.status !== "completed");
@@ -10,7 +10,7 @@ export const ClearButton = ({ tasks, setTasks }) => {
   return (
     <div>
       <p
-        className={` text-dark-darkGrayishBlue ${hoverTaskActionColor()} cursor-pointer`}
+        className={` text-dark-darkGrayishBlue ${styles.hoverTaskActionColor} cursor-pointer`}
         onClick={handleDelete}
       >
         Clear Completed
