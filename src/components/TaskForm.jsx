@@ -20,7 +20,7 @@ export const TaskForm = ({ placeholder, tasks, setTasks }) => {
 
   return (
     <form
-      className={`flex items-center ${styles.backgroundInputColor}  h-[50px] px-6  rounded-lg `}
+      className={`flex items-center ${styles.backgroundInputColor}  h-[60px] px-6  rounded-lg `}
       onSubmit={onSubmit}
     >
       <input type="checkbox" className="hidden" />

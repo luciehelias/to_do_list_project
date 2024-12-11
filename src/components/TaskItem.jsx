@@ -53,7 +53,7 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
     <div
       className={`flex items-center space-x-2 ${
         styles.backgroundInputColor
-      } h-[50px] px-6 ${styles.borderBottomInputColor} 
+      } h-[60px] px-6 ${styles.borderBottomInputColor} 
        justify-between group ${isFirst ? "rounded-t-md" : ""}`}
     >
       <div className="flex ">
