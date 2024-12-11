@@ -10,6 +10,7 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
     backgroundInputColor,
     borderBottomInputColor,
     isDarkMode,
+    deleteCrossColor,
   } = useTheme();
   const { isMobile } = useScreenSize();
 
@@ -92,7 +93,7 @@ export const TaskItem = ({ task, tasks, setTasks, isFirst }) => {
         xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
-        className={`text-light-darkGrayishBlue cursor-pointer  transition-opacity duration-300 ${
+        className={`${deleteCrossColor()} cursor-pointer  transition-opacity duration-300 ${
           isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
         fill="currentColor"

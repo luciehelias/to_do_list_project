@@ -35,7 +35,7 @@ export const ThemeProvider = ({ children }) => {
     if (isDarkMode) {
       return "border-b-dark-veryDarkGrayishBlue1 border-b";
     }
-    return "border-b-light-gray border-b";
+    return "border-b-light-lightGrayishBlue border-b";
   };
 
   const backgroundTaskActionColor = () => {
@@ -49,7 +49,14 @@ export const ThemeProvider = ({ children }) => {
     if (isDarkMode) {
       return "hover:text-dark-lightGrayishBlue";
     }
-    return "hover:text-dark-veryDarkGrayishBlue1";
+    return "hover:text-light-veryDarkGrayishBlue";
+  };
+
+  const deleteCrossColor = () => {
+    if (isDarkMode) {
+      return "text-dark-veryDarkGrayishBlue1";
+    }
+    return "text-light-darkGrayishBlue";
   };
 
   return (
@@ -63,6 +70,7 @@ export const ThemeProvider = ({ children }) => {
         backgroundTaskActionColor,
         hoverTaskActionColor,
         backgroundApp,
+        deleteCrossColor,
       }}
     >
       {children}
