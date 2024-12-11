@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { ClearButton } from "./ClearButton";
+
 import { TaskFilter } from "./TaskFilter";
 import { useTheme } from "../contexts/theme.context";
 import { useScreenSize } from "../contexts/screenSize.context";
+import { ClearButton } from "./ClearButton";
 
 export const TaskActions = ({
   tasks,
