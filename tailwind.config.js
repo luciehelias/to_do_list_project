@@ -29,6 +29,7 @@ export default {
           veryDarkGrayishBlue1: "hsl(233, 14%, 35%)",
           veryDarkGrayishBlue2: "hsl(237, 14%, 26%)",
         },
+        brightBlue: "hsl(220, 98%, 61%)",
       },
     },
   },

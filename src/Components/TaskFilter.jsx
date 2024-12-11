@@ -9,59 +9,37 @@ export const TaskFilter = ({
   const [activeCategory, setActiveCategory] = useState("");
   const { styles } = useTheme();
 
+  // Define categories and their associated actions
+  const categories = [
+    { label: "All", action: handleAllTasks, key: "all" },
+    { label: "Active", action: handleActiveTasks, key: "active" },
+    { label: "Completed", action: handleCompletedTasks, key: "completed" },
+  ];
+
+  const handleCategoryClick = (key, action) => {
+    if (activeCategory === key) {
+      setActiveCategory(""); // Deselect the category if it's already active
+    } else {
+      action(); // Execute the associated action
+      setActiveCategory(key); // Set the clicked category as active
+    }
+  };
+
   return (
     <div className="flex gap-4">
-      <p
-        className={` ${styles.hoverTaskActionColor} cursor-pointer ${
-          activeCategory === "all"
-            ? "text-blue-500"
-            : "text-dark-darkGrayishBlue"
-        }`}
-        onClick={() => {
-          if (activeCategory === "all") {
-            setActiveCategory("");
-          } else {
-            handleAllTasks();
-            setActiveCategory("all");
-          }
-        }}
-      >
-        All
-      </p>
-      <p
-        className={` ${styles.hoverTaskActionColor} cursor-pointer ${
-          activeCategory === "active"
-            ? "text-blue-500"
-            : "text-dark-darkGrayishBlue"
-        }`}
-        onClick={() => {
-          if (activeCategory === "active") {
-            setActiveCategory("");
-          } else {
-            handleActiveTasks();
-            setActiveCategory("active");
-          }
-        }}
-      >
-        Active
-      </p>
-      <p
-        className={`${styles.hoverTaskActionColor} cursor-pointer ${
-          activeCategory === "completed"
-            ? "text-blue-500"
-            : "text-dark-darkGrayishBlue"
-        }`}
-        onClick={() => {
-          if (activeCategory === "completed") {
-            setActiveCategory("");
-          } else {
-            handleCompletedTasks();
-            setActiveCategory("completed");
-          }
-        }}
-      >
-        Completed
-      </p>
+      {categories.map(({ label, action, key }) => (
+        <p
+          key={key}
+          className={`cursor-pointer ${styles.hoverTaskActionColor} ${
+            activeCategory === key
+              ? "text-brightBlue"
+              : "text-dark-darkGrayishBlue"
+          }`}
+          onClick={() => handleCategoryClick(key, action)}
+        >
+          {label}
+        </p>
+      ))}
     </div>
   );
 };
