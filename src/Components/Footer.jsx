@@ -8,13 +8,13 @@ export const Footer = () => {
           Frontend Mentor
         </a>
         .
-        <p>
-          Coded by{" "}
-          <a href="https://luciehelias.com/" target="_blank">
-            Lucie Helias
-          </a>
-          .
-        </p>
+      </p>
+      <p>
+        Coded by{" "}
+        <a href="https://luciehelias.com/" target="_blank">
+          Lucie Helias
+        </a>
+        .
       </p>
     </div>
   );
