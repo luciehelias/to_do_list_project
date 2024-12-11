@@ -1,14 +1,15 @@
 import Cookies from "js-cookie";
 
-import { Header } from "@components/Header";
+import { Header } from "./components/Header";
+
 import { useEffect, useState } from "react";
 
-import { TaskActions } from "@components/TaskActions";
-import { TaskFilter } from "@components/TaskFilter";
+import { TaskActions } from "./components/TaskActions";
+import { TaskFilter } from "./components/TaskFilter";
 
-import { TaskForm } from "@components/TaskForm";
-import { TaskList } from "@components/TaskList";
-import { Footer } from "@components/Footer";
+import { TaskForm } from "./components/TaskForm";
+import { TaskList } from "./components/TaskList";
+import { Footer } from "./components/Footer";
 
 import { useScreenSize } from "./contexts/screenSize.context";
 import { useTheme } from "./contexts/theme.context";
